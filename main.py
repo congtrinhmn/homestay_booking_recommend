@@ -24,7 +24,7 @@ def hello_world(uid):
     v = get_list_of_dict(keys, recommend(uid))
     print(len(v))
     response = app.response_class(
-        response=json.dumps(v),
+        response=json.dumps({"body": v, "length": len(v)}),
         status=200,
         mimetype='application/json'
     )
@@ -32,4 +32,4 @@ def hello_world(uid):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=4455)
