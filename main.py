@@ -13,6 +13,11 @@ def get_list_of_dict(keys, list_of_tuples):
     return list_of_dict
 
 
+@app.route('/')
+def index():
+    return "<h1>Welcome to Homestay Booking Recommend System</h1>"
+
+
 @app.route('/api/recommend/<int:uid>')
 def hello_world(uid):
     keys = ("place_id", "rating")
