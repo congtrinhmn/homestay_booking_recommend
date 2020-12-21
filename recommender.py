@@ -10,7 +10,7 @@ from surprise.model_selection import KFold
 
 
 def train():
-    df = pd.read_csv('data_200k.csv')
+    df = pd.read_csv('data_30k.csv')
 
     df.info()
 
@@ -39,14 +39,14 @@ def train():
     count_places = df['listing_id'].value_counts()
     print('count_places')
     print(count_places)
-    df = df[df['listing_id'].isin(count_places[count_places >= 10].index)]
+    df = df[df['listing_id'].isin(count_places[count_places >= 5].index)]
 
     df.shape
 
     count_reviewers = df['reviewer_id'].value_counts()
     print('count_reviewers')
     print(count_reviewers)
-    df = df[df['reviewer_id'].isin(count_reviewers[count_reviewers > 3].index)]
+    df = df[df['reviewer_id'].isin(count_reviewers[count_reviewers > 2].index)]
 
     df.describe()
 
@@ -160,6 +160,6 @@ def train():
         row = [uid, top_20_recommendations[uid]]
         dfo.loc[i] = row
         i = i + 1
-    dfo.to_csv('output_200k.csv', index=False)
+    dfo.to_csv('output_30k.csv', index=False)
 
     print("Wrote recommendations for each user in csv file")
