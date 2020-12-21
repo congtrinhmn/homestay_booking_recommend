@@ -163,6 +163,3 @@ def train():
     dfo.to_csv('output_200k.csv', index=False)
 
     print("Wrote recommendations for each user in csv file")
-
-
-train()
